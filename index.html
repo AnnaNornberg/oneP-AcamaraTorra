@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Câmara Torra — Cafeteria autoral de micro-lotes, extração lenta, doces de forno e encontros à meia-luz." />
+  <title>Câmara Torra — Cafeteria Autoral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#topo" class="brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>câmara.torra</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#ritual">Por trás do balcão</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#degustacoes">Degustações</a>
+        <a href="#refugio">O lugar</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="pill-btn" id="cart-trigger" aria-label="Abrir sacola de pedidos">
+          Sacola (<span id="cart-count">0</span>)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Comidas •  &amp; Cafés</span>
+          <h1>Onde a tarde desacelera.</h1>
+          <p class="hero-lead">
+            Grãos de altitude torrados em pequenos lotes, extrações pausadas, receitas de forno com chocolate amargo e especiarias, e cantos pensados para conversas ou leituras sem pressa.
+          </p>
+          <div class="hero-actions">
+            <a href="#cardapio" class="btn btn-ember">Explorar o cardápio</a>
+            <a href="#refugio" class="btn btn-ghost">Horários &amp; encontro</a>
+          </div>
+          <div class="hero-meta">
+            <span>Ter a Dom • 10h às 21h</span>
+            <span>•</span>
+            <span>Rua das Acácias, 248 </span>
+          </div>
+        </div>
+
+        <div class="hero-media reveal">
+          <figure class="frame-main">
+            <img src="assets/câmara-sala.jpg" alt="Interior intimista da Câmara Torra à luz âmbar" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="ritual" class="section section-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Por trás do balcão</span>
+          <h2>Três gestos que mudam a xícara</h2>
+          <p>Nada aqui é feito na correria. Cada etapa respeita temperatura, tempo de repouso e aroma.</p>
+        </div>
+
+        <div class="ritual-grid">
+          <article class="ritual-card reveal">
+            <span class="ritual-num">01</span>
+            <h3>Curva de torra contida</h3>
+            <p>Buscamos doçura de caramelo, cacau e notas frutadas maduras em vez de amargor excessivo.</p>
+          </article>
+          <article class="ritual-card reveal">
+            <span class="ritual-num">02</span>
+            <h3>Água e tempo certos</h3>
+            <p>Coados manuais, extração a frio de longa maturação e vaporização delicada para manter textura aveludada.</p>
+          </article>
+          <article class="ritual-card reveal">
+            <span class="ritual-num">03</span>
+            <h3>Forno em levas curtas</h3>
+            <p>Cookies de borda crocante e miolo macio, brownies densos e massas salgadas saem em fornadas limitadas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cardapio" class="section">
+      <div class="container">
+        <div class="menu-top reveal">
+          <div>
+            <span class="eyebrow">Seleção da casa</span>
+            <h2>Cardápio</h2>
+          </div>
+          <div class="menu-tabs" role="tablist" aria-label="Categorias do cardápio">
+            <button type="button" class="tab-btn is-active" role="tab" aria-selected="true" data-cat="quentes">Quentes &amp; Métodos</button>
+            <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="frias">Gelados &amp; Autoriais</button>
+            <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="forno">Forno &amp; Salgados</button>
+          </div>
+        </div>
+
+        <div class="menu-grid" id="menu-grid"></div>
+
+        <div class="full-menu-banner reveal">
+          <div class="full-menu-text">
+            <span class="eyebrow">Cardápio completo</span>
+            <h3>Quer ver cada item, variação e adicional sem pressa?</h3>
+            <p>Abra a lista completa reunida na página para consultar todas as bebidas, métodos e fornadas antes de montar sua sacola.</p>
+          </div>
+          <div class="full-menu-actions">
+            <button type="button" class="btn btn-ember" id="open-full-menu-btn">Ver cardápio inteiro</button>
+            <button type="button" class="btn btn-ghost" id="print-menu-btn">Imprimir / Salvar em PDF</button>
+          </div>
+        </div>
+
+        <div class="catalog-sheet" id="catalog-sheet" hidden>
+          <div class="catalog-sheet-head">
+            <h3>Lista completa da Câmara Torra</h3>
+            <button type="button" class="text-link-btn" id="close-full-menu-btn">Recolher</button>
+          </div>
+          <div class="catalog-columns" id="catalog-columns"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="degustacoes" class="section section-alt">
+      <div class="container">
+        <div class="spotlight-grid">
+          <div class="spotlight-stack reveal">
+            <figure class="spotlight-img-card">
+              <img src="assets/extracao-lenta.jpg" alt="Extração lenta de café coado em jarra esfumaçada" loading="lazy" />
+            </figure>
+            <figure class="spotlight-img-card">
+              <img src="assets/fornada-escura.jpg" alt="Cookie de chocolate amargo e massa condimentada" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="spotlight-copy reveal">
+            <span class="eyebrow">Rituais de mesa</span>
+            <h2>Combinações pensadas para ficar</h2>
+            <p>
+              Alguns pedidos nasceram para ir juntos: o contraste entre uma extração encorpada ou cítrica e algo assado no ponto certo, servido morno.
+            </p>
+
+            <div class="pairings-list" id="pairings-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="refugio" class="section">
+      <div class="container">
+        <div class="refugio-grid">
+          <div class="refugio-photo reveal">
+            <figure class="frame-main">
+              <img src="assets/câmara-sala.jpg" alt="Canto reservado à meia-luz com livro aberto e xícara de café" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="refugio-info reveal">
+            <span class="eyebrow">Encontros &amp; atmosfera</span>
+            <h2>Um espaço que não te apressa</h2>
+            <p>
+               Temos cantos para quem vai escrever, ler, conversar ou buscar um café antes de continuar o caminho.
+            </p>
+
+            <dl class="info-list">
+              <div>
+                <dt>Funcionamento</dt>
+                <dd>Terça a sexta: 10h às 21h • Sábado e domingo: 13h às 21h30</dd>
+              </div>
+              <div>
+                <dt>Endereço</dt>
+                <dd>Rua das Acácias, 248 — Centro Histórico</dd>
+              </div>
+              <div>
+              </div>
+              <div>
+                <dt>Opções da casa</dt>
+                <dd>Leite vegetal, sem lactose e grão descafeinado sob consulta.</dd>
+              </div>
+            </dl>
+
+            <div class="refugio-actions">
+              <a href="#" id="reserve-whats" target="_blank" rel="noopener" class="btn btn-ember">Falar no WhatsApp</a>
+              <button type="button" class="btn btn-ghost" id="mood-note-btn">Puxar um bilhete da casa</button>
+            </div>
+
+          
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>câmara.torra</strong>
+        <span>© 2026 Câmara Torra — Cafeteria &amp; Micro-Torrefação.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#cardapio">Cardápio</a>
+        <a href="#degustacoes">Degustações</a>
+        <a href="#refugio">Local</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Sacola de pedidos" hidden>
+    <div class="drawer-head">
+      <h3>Sua sacola</h3>
+      <button type="button" class="close-btn" id="close-drawer" aria-label="Fechar sacola">×</button>
+    </div>
+    <div class="drawer-body" id="cart-items"></div>
+    <div class="drawer-foot">
+      <div class="drawer-total">
+        <span>Total estimado</span>
+        <strong id="cart-total">R$ 0,00</strong>
+      </div>
+      <button type="button" class="btn btn-ember btn-full" id="checkout-whats">
+        Enviar pedido pelo WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
